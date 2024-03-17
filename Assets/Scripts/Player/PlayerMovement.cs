@@ -19,7 +19,9 @@ public class PlayerMovement : MonoBehaviour
     private bool isSprinting = false;
     MovementState state;
     public static bool blockMovement = false;
-    private bool freezed = false;
+    private static bool freezed = false;
+
+    static PlayerMovement pl;
 
     private enum MovementState { idle, running, sprinting, jumping, falling }
 
@@ -30,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
         boxColl = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
         rbSprite = GetComponent<SpriteRenderer>();
+        pl = this;
     }
 
     // Update is called once per frame
@@ -48,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
         if(!freezed) UpdateAnimationState();
 
         // Jump
-        if (Input.GetButton("Jump") && isOnGround())
+        if (Input.GetButton("Jump") && !blockMovement && isOnGround())
         {
             rb.velocity = new Vector2 (rb.velocity.x, jumpHeight * (speedMultiplier/2f +0.5f));
         }
@@ -57,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
     private void UpdateAnimationState()
     {
         // Idle & Running & Sprinting
-        if (xVel == 0)
+        if (xVel == 0 || blockMovement)
         {
             state = MovementState.idle;
         }
@@ -87,15 +90,15 @@ public class PlayerMovement : MonoBehaviour
         return (state != MovementState.jumping && state != MovementState.falling) && Physics2D.BoxCast(boxColl.bounds.center, boxColl.bounds.size, 0f, Vector2.down, 0.1f, jumpableGround);
     }
 
-    public void freeze()
+    public static void freeze()
     {
         freezed = true;
-        rb.bodyType = RigidbodyType2D.Static;
+        pl.rb.bodyType = RigidbodyType2D.Static;
     }
 
-    public void unfreeze()
+    public static void unfreeze()
     {
         freezed = false;
-        rb.bodyType = RigidbodyType2D.Dynamic;
+        pl.rb.bodyType = RigidbodyType2D.Dynamic;
     }
 }

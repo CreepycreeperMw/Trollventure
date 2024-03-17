@@ -14,14 +14,14 @@ public class TextBubble : MonoBehaviour
         textMeshPro = transform.Find("Text").GetComponent<TextMeshPro>();
     }
 
-    public static void Create(GameObject parent, string text, Vector3 offset)
+    public static TextBubble Create(GameObject parent, string text, Vector3 offset)
     {
         GameObject t = Instantiate(GameHandler.assets.textBubble, (parent.transform.position), parent.transform.rotation);
         t.transform.SetParent(parent.transform);
         TextBubble textBubble = t.GetComponent<TextBubble>();
         
         textBubble.Setup(text, offset);
-
+        return textBubble;
     }
 
     public void Setup(string text, Vector2 offset) {

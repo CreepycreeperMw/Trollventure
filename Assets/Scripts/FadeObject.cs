@@ -6,12 +6,14 @@ using UnityEngine;
 public class FadeObject : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
-    float timeElapsed = 0;
-    float _targetOpacity = 0;
+    float timeElapsed = 0f;
     bool isFading = false;
-    float delay = 0;
+
     float fadeTime = 0;
-    float startOpacity;
+    float delay = 0;
+
+    float _targetOpacity = 0;
+    float _startOpacity;
     Coroutine c = null;
     void Start()
     {
@@ -32,7 +34,7 @@ public class FadeObject : MonoBehaviour
 
         float progress = timeElapsed / fadeTime;
 
-        spriteRenderer.color = new Color(1, 1, 1, _targetOpacity*progress+startOpacity*(1-progress));
+        spriteRenderer.color = new Color(1, 1, 1, _targetOpacity*progress+_startOpacity*(1-progress));
     }
 
     [ContextMenu("StartFade")]
@@ -50,11 +52,16 @@ public class FadeObject : MonoBehaviour
     }
     public void StartFade(float fadeTimeSec, float delaySeconds, float targetOpacity)
     {
+        StartFade(fadeTimeSec, delaySeconds, targetOpacity, spriteRenderer.color.a);
+    }
+    public void StartFade(float fadeTimeSec, float delaySeconds, float targetOpacity, float startOpacity)
+    {
+        timeElapsed = 0f;
         fadeTime = fadeTimeSec;
         delay = delaySeconds;
 
-        startOpacity = spriteRenderer.color.a;
         _targetOpacity = targetOpacity;
+        _startOpacity = startOpacity;
         if(c!=null) StopCoroutine(c);
         c = StartCoroutine(Fade());
     }

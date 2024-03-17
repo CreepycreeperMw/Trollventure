@@ -15,15 +15,18 @@ public class MusicHandler : MonoBehaviour
     float startVolume;
     float targetVolume = 0;
     Coroutine c = null;
+    public static MusicHandler handler;
 
     private void Awake()
     {
-        DontDestroyOnLoad(this);
-    }
-
-    private void Start()
-    {
         music = GetComponent<AudioSource>();
+        if (handler == null) {
+            handler = this;
+            DontDestroyOnLoad(gameObject);
+        } else
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Update()
