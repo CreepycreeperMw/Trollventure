@@ -7,7 +7,7 @@ public class FadeObject : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
     float timeElapsed = 0;
-    float targetOpacity = 0;
+    float _targetOpacity = 0;
     bool isFading = false;
     float delay = 0;
     float fadeTime = 0;
@@ -25,14 +25,14 @@ public class FadeObject : MonoBehaviour
 
         if (timeElapsed >= fadeTime)
         {
-            spriteRenderer.color = new Color(1, 1, 1, targetOpacity);
+            spriteRenderer.color = new Color(1, 1, 1, _targetOpacity);
             StopFade();
             return;
         }
 
         float progress = timeElapsed / fadeTime;
 
-        spriteRenderer.color = new Color(1, 1, 1, targetOpacity*progress+startOpacity*(1-progress));
+        spriteRenderer.color = new Color(1, 1, 1, _targetOpacity*progress+startOpacity*(1-progress));
     }
 
     [ContextMenu("StartFade")]
@@ -50,9 +50,11 @@ public class FadeObject : MonoBehaviour
     }
     public void StartFade(float fadeTimeSec, float delaySeconds, float targetOpacity)
     {
-        startOpacity = spriteRenderer.color.a;
         fadeTime = fadeTimeSec;
         delay = delaySeconds;
+
+        startOpacity = spriteRenderer.color.a;
+        _targetOpacity = targetOpacity;
         if(c!=null) StopCoroutine(c);
         c = StartCoroutine(Fade());
     }
