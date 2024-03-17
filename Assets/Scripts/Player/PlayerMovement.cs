@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     private float xVel = 0f;
     private bool isSprinting = false;
     MovementState state;
+    public static bool blockMovement = false;
+    private bool freezed = false;
 
     private enum MovementState { idle, running, sprinting, jumping, falling }
 
@@ -41,9 +43,9 @@ public class PlayerMovement : MonoBehaviour
         if (isSprinting) speedMultiplier = 1.5f;
 
         // Movement Logic
-        if(!PlayerLife.isDead()) rb.velocity = new Vector2(xVel * moveSpeed * speedMultiplier, rb.velocity.y);
+        if(!PlayerLife.isDead() && !blockMovement && !freezed) rb.velocity = new Vector2(xVel * moveSpeed * speedMultiplier, rb.velocity.y);
         
-        UpdateAnimationState();
+        if(!freezed) UpdateAnimationState();
 
         // Jump
         if (Input.GetButton("Jump") && isOnGround())
@@ -83,5 +85,17 @@ public class PlayerMovement : MonoBehaviour
     private bool isOnGround()
     {
         return (state != MovementState.jumping && state != MovementState.falling) && Physics2D.BoxCast(boxColl.bounds.center, boxColl.bounds.size, 0f, Vector2.down, 0.1f, jumpableGround);
+    }
+
+    public void freeze()
+    {
+        freezed = true;
+        rb.bodyType = RigidbodyType2D.Static;
+    }
+
+    public void unfreeze()
+    {
+        freezed = false;
+        rb.bodyType = RigidbodyType2D.Dynamic;
     }
 }

@@ -24,8 +24,8 @@ public class EventCollider : MonoBehaviour
         foreach (var gObj in gameObjects)
         {
             EventExecutor test = gObj.GetComponent<EventExecutor>();
-            test.OnTrigger(collision.gameObject);
-            test.OnTrigger(collision.gameObject, this);
+            test.OnTriggerOff(collision.gameObject);
+            test.OnTriggerOff(collision.gameObject, this);
         }
     }
 }

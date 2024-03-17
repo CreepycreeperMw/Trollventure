@@ -11,9 +11,9 @@ public class CameraController : MonoBehaviour
     private static float maxYdistance = 2.0f;
     Camera cam;
 
-    bool followPlayer = true;
-    Vector2 targetPoint = Vector2.zero;
-    float speed = 0.2f;
+    [SerializeField] private bool followPlayer = true;
+    [SerializeField] private Vector3 targetPoint = Vector3.zero;
+    [SerializeField] private float speed = 0.2f;
 
     static private CameraController mainCamera;
 
@@ -57,14 +57,14 @@ public class CameraController : MonoBehaviour
         }
         else
         {
-            if (targetPoint == null || speed == 0f) { return; }
-            if(Vector2.Distance(transform.position, targetPoint) < 0.1f)
+            if (speed == 0f) { return; }
+            if(Vector3.Distance(transform.position, targetPoint) < 0.1f)
             {
                 transform.position = targetPoint;
                 speed = 0f;
                 return;
             }
-            Vector2.MoveTowards(transform.position, targetPoint, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPoint, speed * Time.deltaTime);
         }
     }
 

@@ -44,6 +44,11 @@ public class TextBubble : MonoBehaviour
         bg.transform.localPosition = new Vector3(bg.size.x / 2f, 0f) + hardOffset;
     }
 
+    public void SetText(string text)
+    {
+        textMeshPro.SetText(text);
+    }
+
     public void Delete()
     {
         Destroy(gameObject);
