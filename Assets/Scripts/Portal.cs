@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Portal : MonoBehaviour
 {
     public bool active = true;
-    private int sceneIndex = 2;
+    [SerializeField] private int sceneIndex = 2;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

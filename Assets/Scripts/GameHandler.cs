@@ -7,6 +7,7 @@ public class GameHandler : MonoBehaviour
     [SerializeField] GameObject music = null;
     public static GameAssets assets;
     public static GameHandler instance;
+    public static bool watchedID1 = true;
 
     void Awake()
     {
@@ -17,10 +18,6 @@ public class GameHandler : MonoBehaviour
         } else
         {
             Destroy(gameObject);
-        }
-        if (!GameObject.Find("MusicHandler(Clone)"))
-        {
-            Instantiate(music);
         }
         assets = GetComponent<GameAssets>();
     }

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     private BoxCollider2D boxColl;
     private Animator anim;
     private SpriteRenderer rbSprite;
@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     public static bool blockMovement = false;
     private static bool freezed = false;
 
-    static PlayerMovement pl;
+    static public PlayerMovement pl;
 
     private enum MovementState { idle, running, sprinting, jumping, falling }
 

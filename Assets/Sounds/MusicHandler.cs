@@ -19,8 +19,8 @@ public class MusicHandler : MonoBehaviour
 
     private void Awake()
     {
-        music = GetComponent<AudioSource>();
         if (handler == null) {
+            music = GetComponent<AudioSource>();
             handler = this;
             DontDestroyOnLoad(gameObject);
         } else
