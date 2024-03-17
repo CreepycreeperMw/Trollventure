@@ -54,8 +54,16 @@ public class CameraController : MonoBehaviour
                 y = yOffset + maxYdistance;
             }
             transform.position = new Vector3(transform.position.x + x, transform.position.y+y, transform.position.z);
-        } else {
-            if(targetPoint == null) { return; }
+        }
+        else
+        {
+            if (targetPoint == null || speed == 0f) { return; }
+            if(Vector2.Distance(transform.position, targetPoint) < 0.1f)
+            {
+                transform.position = targetPoint;
+                speed = 0f;
+                return;
+            }
             Vector2.MoveTowards(transform.position, targetPoint, speed * Time.deltaTime);
         }
     }
@@ -73,7 +81,10 @@ public class CameraController : MonoBehaviour
         speed = transitionSpeed;
     }
 
-    public static CameraController getCam() {
-        return mainCamera;
+    public static CameraController activeCam {
+        get
+        {
+            return mainCamera;
+        }
     }
 }
