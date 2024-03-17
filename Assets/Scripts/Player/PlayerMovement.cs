@@ -28,12 +28,6 @@ public class PlayerMovement : MonoBehaviour
         boxColl = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
         rbSprite = GetComponent<SpriteRenderer>();
-
-        TextBubble.Create(
-            this.gameObject,
-            "Hello!",
-            new Vector3(0f, 0f)
-        );
     }
 
     // Update is called once per frame

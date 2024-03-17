@@ -41,7 +41,6 @@ public class PlayerLife : MonoBehaviour
     {
         if(!_isDead && transform.position.y < -10 && !safe)
         {
-            Debug.Log(safe);
             Die();
         }
     }

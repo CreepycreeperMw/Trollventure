@@ -7,39 +7,41 @@ public class TextBubble : MonoBehaviour
 {
     private SpriteRenderer bg;
     private TextMeshPro textMeshPro;
-    [SerializeField] private static GameObject template;
-    [SerializeField] private GameObject _template;
 
     private void Awake()
     {
         bg = transform.Find("Background").GetComponent<SpriteRenderer>();
         textMeshPro = transform.Find("Text").GetComponent<TextMeshPro>();
-        template = _template;
     }
 
     public static void Create(GameObject parent, string text, Vector3 offset)
     {
-        GameObject t = Instantiate(template, (parent.transform.position + offset), parent.transform.rotation);
+        GameObject t = Instantiate(GameHandler.assets.textBubble, (parent.transform.position), parent.transform.rotation);
         t.transform.SetParent(parent.transform);
-        t.GetComponent<TextBubble>().Setup(text, offset);
+        TextBubble textBubble = t.GetComponent<TextBubble>();
+        
+        textBubble.Setup(text, offset);
+
     }
 
     public void Setup(string text, Vector2 offset) {
+        Vector3 hardOffset = new Vector3(-1.2f, 0.1f);
         Vector3 _offset = (Vector3) offset;
         textMeshPro.SetText(text);
         textMeshPro.ForceMeshUpdate();
 
         Vector2 textSize = textMeshPro.GetRenderedValues(false);
-        Vector2 padding = new Vector2(2f, 2f);
+        Vector2 padding = new Vector2(1f, 1.3f);
+
+        if (offset.x > 0)
+        {
+            bg.flipX = true;
+        } else bg.flipX = false;
+        transform.localPosition = _offset;
 
         bg.size = textSize + padding;
 
-        if(offset.x > 0)
-        {
-            bg.flipX = true;
-        }
-
-        bg.transform.localPosition = new Vector3(bg.size.x / 2f, 0f) + _offset;
+        bg.transform.localPosition = new Vector3(bg.size.x / 2f, 0f) + hardOffset;
     }
 
     public void Delete()
