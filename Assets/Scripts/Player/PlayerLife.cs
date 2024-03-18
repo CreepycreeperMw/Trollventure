@@ -11,6 +11,8 @@ public class PlayerLife : MonoBehaviour
     private static bool fallDamage = false;
     public static bool safe = false;
     private static DateTime fallTime = DateTime.Now;
+    public static PlayerLife pl;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -18,6 +20,7 @@ public class PlayerLife : MonoBehaviour
         fallDamage = false;
         _isDead = false;
         safe = false;
+        pl = this;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
