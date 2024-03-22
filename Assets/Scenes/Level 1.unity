@@ -769,7 +769,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &519260628
 RectTransform:
   m_ObjectHideFlags: 0
@@ -786,8 +786,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 233.13217, y: -54}
-  m_SizeDelta: {x: 411.6292, y: 53.6736}
+  m_AnchoredPosition: {x: 197.6369, y: -71.13565}
+  m_SizeDelta: {x: 340.6387, y: 87.9449}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &519260629
 MonoBehaviour:
@@ -822,7 +822,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Profiometer: Mhmm, hol dir die saftigen Erdbeeren!!!'
+  m_Text: 'Useless statistic: <color=#666>Mhmm, hol dir die saftigen Erdbeeren!!!</color>'
 --- !u!222 &519260630
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -937,6 +937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 462826845}
+  maxDistance: {x: 5, y: 2}
   followPlayer: 1
   targetPoint: {x: 0, y: 0, z: -10}
   speed: 0.2
@@ -2679,7 +2680,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a974598af6636724780712e1c24eaffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  music: {fileID: 6808465786413105977, guid: f6ecfd45da158054d859d81b14aebd9f, type: 3}
 --- !u!4 &1509847981
 Transform:
   m_ObjectHideFlags: 0
@@ -3204,6 +3204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: Hi, how are you doing?
+  time: 1
   offset: {x: 0, y: 0, z: 0}
 --- !u!4 &1837946464 stripped
 Transform:
@@ -3794,6 +3795,14 @@ PrefabInstance:
     - target: {fileID: 4521910160933881236, guid: c54cc481a79bfe94c9155362110b50c6, type: 3}
       propertyPath: m_Name
       value: Grid
+      objectReference: {fileID: 0}
+    - target: {fileID: 6540939260126957201, guid: c54cc481a79bfe94c9155362110b50c6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6540939260126957201, guid: c54cc481a79bfe94c9155362110b50c6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.125
       objectReference: {fileID: 0}
     - target: {fileID: 7278889060979302587, guid: c54cc481a79bfe94c9155362110b50c6, type: 3}
       propertyPath: m_LocalPosition.x

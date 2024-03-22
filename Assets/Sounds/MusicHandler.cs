@@ -37,7 +37,6 @@ public class MusicHandler : MonoBehaviour
         if (timeElapsed >= fadeTime)
         {
             music.volume = targetVolume;
-            Debug.Log("DONE");
             StopFade();
             return;
         }
@@ -69,14 +68,12 @@ public class MusicHandler : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         isFading = true;
-        Debug.Log("START");
     }
     public void StopFade()
     {
         isFading = false;
         timeElapsed = 0;
         StopCoroutine(c);
-        Debug.Log("STOP");
     }
 
 

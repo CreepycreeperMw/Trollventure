@@ -33,10 +33,10 @@ public class GandalfEncounter1 : MonoBehaviour
             yield return new WaitForSeconds(0.34f);
 
             AudioManager.instance.Play("hit");
+            yield return new WaitForSeconds(0.71f);
 
             if (!GameHandler.watchedID1)
             {
-                yield return new WaitForSeconds(0.71f);
                 TextBubble tb = TextBubble.Create(con, "Wer bist du?", offset);
                 yield return new WaitForSeconds(2f);
                 tb.Setup("Was suchst du hier? ...", offset);
@@ -74,7 +74,7 @@ public class GandalfEncounter1 : MonoBehaviour
 
             PlayerMovement.blockMovement = false;
 
-            MusicHandler.handler.Fade(1f, 0f, 1f);
+            MusicHandler.handler.Fade(1f, 0f, 0.7f);
         }
     }
 }

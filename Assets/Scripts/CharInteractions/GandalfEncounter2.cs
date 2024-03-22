@@ -17,7 +17,7 @@ public class GandalfEncounter2 : MonoBehaviour
 
     private IEnumerator OnTriggerEnter2D(Collider2D collision)
     {
-        if(!triggered && collision.gameObject.CompareTag("player"))
+        if (!triggered && collision.gameObject.CompareTag("player"))
         {
             triggered = true;
             PlayerMovement.blockMovement = true;
@@ -31,10 +31,19 @@ public class GandalfEncounter2 : MonoBehaviour
 
             yield return new WaitForSeconds(3f);
 
-            TextBubble tb = TextBubble.Create(con, "Hmm...", offset);
-            yield return new WaitForSeconds(3f);
-            tb.Setup("Fast unterdurchschnittlich...", offset);
-            yield return new WaitForSeconds(3f);
+            TextBubble tb = TextBubble.Create(con, "", offset);
+            tb.WriteText("Hmm...", 0.4f, offset);
+            yield return new WaitUntil(() => !tb.isWriting);
+            yield return new WaitForSeconds(1.2f);
+
+            tb.WriteText("Applaus", 0.4f, offset);
+            yield return new WaitUntil(() => !tb.isWriting);
+            yield return new WaitForSeconds(0.8f);
+            tb.AddText(", fast unterdurchschnittlich", 1f, offset);
+            yield return new WaitUntil(() => !tb.isWriting);
+            yield return new WaitForSeconds(2f);
+
+            // tb.Setup("Fast unterdurchschnittlich...", offset);
             tb.Setup("Das ist ein Portal", offset);
             yield return new WaitForSeconds(2f);
             tb.Setup("Geh durch...", offset);

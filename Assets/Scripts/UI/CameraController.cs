@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Transform player;
     private static float maxXdistance = 5.0f;
     private static float maxYdistance = 2.0f;
+    [SerializeField] private Vector2 maxDistance = new Vector2(maxXdistance, maxYdistance);
     Camera cam;
 
     [SerializeField] private bool followPlayer = true;
@@ -32,11 +33,11 @@ public class CameraController : MonoBehaviour
             float xOffset = player.position.x - transform.position.x;
             float x = 0f;
 
-            if(xOffset > maxXdistance)
+            if (xOffset > maxXdistance)
             {
                 x = xOffset - maxXdistance;
             }
-            else if(-xOffset > maxXdistance)
+            else if (-xOffset > maxXdistance)
             {
                 x = xOffset + maxXdistance;
             }
@@ -45,20 +46,20 @@ public class CameraController : MonoBehaviour
             float yOffset = player.position.y - transform.position.y;
             float y = 0f;
 
-            if(yOffset > maxYdistance)
+            if (yOffset > maxYdistance)
             {
                 y = yOffset - maxYdistance;
             }
-            else if(-yOffset > maxYdistance)
+            else if (-yOffset > maxYdistance)
             {
                 y = yOffset + maxYdistance;
             }
-            transform.position = new Vector3(transform.position.x + x, transform.position.y+y, transform.position.z);
+            transform.position = new Vector3(transform.position.x + x, transform.position.y + y, transform.position.z);
         }
         else
         {
             if (speed == 0f) { return; }
-            if(Vector3.Distance(transform.position, targetPoint) < 0.1f)
+            if (Vector3.Distance(transform.position, targetPoint) < 0.1f)
             {
                 transform.position = targetPoint;
                 speed = 0f;
@@ -79,6 +80,12 @@ public class CameraController : MonoBehaviour
         targetPoint = pos;
         followPlayer = false;
         speed = transitionSpeed;
+    }
+
+    [ContextMenu("Set Max Distance")]
+    private void setMaxDistance()
+    {
+        maxXdistance = maxDistance.x; maxYdistance = maxDistance.y;
     }
 
     public static CameraController activeCam {

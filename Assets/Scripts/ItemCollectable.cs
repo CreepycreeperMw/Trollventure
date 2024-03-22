@@ -14,7 +14,7 @@ public class ItemCollectable : MonoBehaviour
         {
             Destroy(collision.gameObject);
             fruitsCollected++;
-            counterTxt.text = "Pro Counter: "+fruitsCollected;
+            counterTxt.text = "Useless Counter: "+fruitsCollected;
         }
     }
 }

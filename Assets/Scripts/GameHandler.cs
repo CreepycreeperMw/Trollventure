@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class GameHandler : MonoBehaviour
 {
-    [SerializeField] GameObject music = null;
     public static GameAssets assets;
     public static GameHandler instance;
-    public static bool watchedID1 = true;
+    public static bool watchedID1 = false;
 
     void Awake()
     {
