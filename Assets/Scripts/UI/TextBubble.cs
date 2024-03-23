@@ -169,8 +169,11 @@ public class TextBubble : MonoBehaviour
 
             SetText("");
 
-            foreach (var part in page.sentences)
+            DialougeSentence[] sentences = page.sentences;
+            int l = sentences.Length;
+            for (int i = 0; i < l; i++)
             {
+                var part = sentences[i];
                 targetText = writtenText + part.text;
                 frequency = part.writingFrequency;
                 isWriting = true;
@@ -178,8 +181,41 @@ public class TextBubble : MonoBehaviour
                 yield return new WaitUntil(() => isWriting == false);
 
                 if (skipped) { SetText(page.getTotalText()); break; }
-                else yield return new WaitForSeconds(part.stayDuration);
+                else if(l-1 != i) yield return new WaitForSeconds(part.stayDuration);
             }
+
+            if(!page.keepGoingImmediatly) {
+                /// TODO : Notify user that he needs to press enter to keep going
+                if(skipped) yield return new WaitUntil(()=>Input.GetKeyUp(KeyCode.Return));
+                yield return new WaitUntil(()=>Input.GetKeyDown(KeyCode.Return));
+            }
+        }
+    }
+    public IEnumerator WriteDialougeWithOffset(Dialouge dialouge, Vector2 offset)
+    {
+        foreach (var page in dialouge.entries)
+        {
+            charI = 0;
+            Setup(page.getTotalText(), offset);
+            minLines = textMeshPro.textInfo.lineCount;
+
+            SetText("");
+
+            DialougeSentence[] sentences = page.sentences;
+            int l = sentences.Length;
+            for (int i = 0; i < l; i++)
+            {
+                var part = sentences[i];
+                targetText = writtenText + part.text.Replace("\\n","\n");
+                frequency = part.writingFrequency;
+                isWriting = true;
+                skipped = false;
+                yield return new WaitUntil(() => isWriting == false);
+
+                if (skipped) { SetText(page.getTotalText()); break; }
+                else if(page.keepGoingImmediatly || l-1 != i) yield return new WaitForSeconds(part.stayDuration);
+            }
+
             if(!page.keepGoingImmediatly) {
                 /// TODO : Notify user that he needs to press enter to keep going
                 if(skipped) yield return new WaitUntil(()=>Input.GetKeyUp(KeyCode.Return));

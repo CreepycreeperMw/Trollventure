@@ -9,10 +9,13 @@ public class GandalfEncounter1 : MonoBehaviour
     private Animator anim;
     private bool triggered = false;
     private Vector3 offset = new Vector3(-3f, 1.4f);
+    [SerializeField] public DialougeEntry[] dialougeEntries;
+    private Dialouge dialouge;
 
     private void Start()
     {
         anim = gandalf.GetComponent<Animator>();
+        dialouge = new Dialouge(dialougeEntries);
     }
 
     private IEnumerator OnTriggerEnter2D(Collider2D collision)
@@ -37,7 +40,9 @@ public class GandalfEncounter1 : MonoBehaviour
 
             if (!GameHandler.watchedID1)
             {
-                TextBubble tb = TextBubble.Create(con, "Wer bist du?", offset);
+                TextBubble tb = TextBubble.Create(con, "", offset);
+                yield return StartCoroutine(tb.WriteDialougeWithOffset(dialouge, offset));
+/*
                 yield return new WaitForSeconds(2f);
                 tb.Setup("Was suchst du hier? ...", offset);
                 tb.SetText("Was suchst du hier?");
@@ -66,7 +71,7 @@ public class GandalfEncounter1 : MonoBehaviour
                 tb.Setup("Vielleicht sehen wir uns ja wieder...", offset);
                 yield return new WaitForSeconds(2f);
                 tb.Setup("Ich hoffe nicht.", offset);
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(2f);*/
                 tb.Delete();
             }
             fade.StartFade(0.5f, 0f, 0f, 1f);

@@ -2355,6 +2355,97 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gandalf: {fileID: 1783596221}
   con: {fileID: 2110695393}
+  dialougeEntries:
+  - dialougeSentences:
+    - text: Wer bist du?
+      writingDuration: 0.4
+      stayDuration: 1.6
+    offset: {x: 0, y: 0}
+    keepGoingImmediatly: 0
+  - dialougeSentences:
+    - text: 'Was suchst du hier? '
+      writingDuration: 0.4
+      stayDuration: 0.3
+    - text: .
+      writingDuration: 0
+      stayDuration: 0.3
+    - text: .
+      writingDuration: 0
+      stayDuration: 0.3
+    - text: .
+      writingDuration: 0
+      stayDuration: 1
+    offset: {x: 0, y: 0}
+    keepGoingImmediatly: 1
+  - dialougeSentences:
+    - text: Ich kann hier keine Stoerenfriede gebrauchen!
+      writingDuration: 1.5
+      stayDuration: 1
+    - text: \n-_-
+      writingDuration: 0
+      stayDuration: 1
+    offset: {x: 0, y: 0}
+    keepGoingImmediatly: 0
+  - dialougeSentences:
+    - text: Weisst du was?
+      writingDuration: 0.5
+      stayDuration: 1
+    offset: {x: 0, y: 0}
+    keepGoingImmediatly: 0
+  - dialougeSentences:
+    - text: Ich glaub du wirst hier sowieso nicht weit kommen.
+      writingDuration: 1.5
+      stayDuration: 2
+    offset: {x: 0, y: 0}
+    keepGoingImmediatly: 0
+  - dialougeSentences:
+    - text: Bisher hat noch niemand meine Fallen geschlagen.
+      writingDuration: 1.5
+      stayDuration: 0
+    offset: {x: 0, y: 0}
+    keepGoingImmediatly: 0
+  - dialougeSentences:
+    - text: Jedenfalls
+      writingDuration: 0.5
+      stayDuration: 0
+    - text: .
+      writingDuration: 0.1
+      stayDuration: 0
+    - text: .
+      writingDuration: 0.1
+      stayDuration: 0
+    - text: .
+      writingDuration: 0.1
+      stayDuration: 1
+    offset: {x: 0, y: 0}
+    keepGoingImmediatly: 1
+  - dialougeSentences:
+    - text: Ich muss noch was erledigen
+      writingDuration: 1
+      stayDuration: 2
+    offset: {x: 0, y: 0}
+    keepGoingImmediatly: 1
+  - dialougeSentences:
+    - text: Vielleicht sehen wir uns ja wieder
+      writingDuration: 1.5
+      stayDuration: 0
+    - text: .
+      writingDuration: 0.1
+      stayDuration: 0
+    - text: .
+      writingDuration: 0.1
+      stayDuration: 0
+    - text: .
+      writingDuration: 0.1
+      stayDuration: 0
+    offset: {x: 0, y: 0}
+    keepGoingImmediatly: 0
+  - dialougeSentences:
+    - text: Ich hoffe nicht.
+      writingDuration: 0.5
+      stayDuration: 1
+    offset: {x: 0, y: 0}
+    keepGoingImmediatly: 1
 --- !u!61 &1447400197
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3361,7 +3452,7 @@ MonoBehaviour:
     - text: Hmm...
       writingDuration: 0.4
       stayDuration: 1.2
-    offset: {x: 0, y: 0}
+    offset: {x: -2, y: 1.4}
     keepGoingImmediatly: 1
   - dialougeSentences:
     - text: Applaus
@@ -3373,7 +3464,7 @@ MonoBehaviour:
     - text: .
       writingDuration: 0
       stayDuration: 2.4
-    offset: {x: 0, y: 0}
+    offset: {x: -3, y: 1.4}
     keepGoingImmediatly: 0
   - dialougeSentences:
     - text: ...
@@ -3382,7 +3473,7 @@ MonoBehaviour:
     - text: ' das ist ein Portal'
       writingDuration: 1
       stayDuration: 3
-    offset: {x: 0, y: 0}
+    offset: {x: -3, y: 1.4}
     keepGoingImmediatly: 1
   - dialougeSentences:
     - text: Wenn du weiter moechtest musst du dadurch
@@ -3391,13 +3482,13 @@ MonoBehaviour:
     - text: .
       writingDuration: 0
       stayDuration: 2.3
-    offset: {x: 0, y: 0}
+    offset: {x: -3, y: 1.4}
     keepGoingImmediatly: 0
   - dialougeSentences:
     - text: Aber sei nicht zu langsam...
-      writingDuration: 0.3
-      stayDuration: 2
-    offset: {x: 0, y: 0}
+      writingDuration: 0.8
+      stayDuration: 1.6
+    offset: {x: -3, y: 1.4}
     keepGoingImmediatly: 1
 --- !u!1 &1972877332
 GameObject:

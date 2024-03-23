@@ -18,7 +18,8 @@ public class MomentumKiller : MonoBehaviour, EventExecutor
         {
             float angle = Vector2.Angle(rb.velocity, transform.position - collision.gameObject.transform.position) - 180;
             Debug.Log(angle);
-            if(angle < 90 && angle > -90) {
+            // TODO LOW PRIO : TEST IF THE ANGLE LOGIC WORKS FINE
+            if(angle < 90 && angle > -90 && Vector2.Distance(rb.velocity, Vector2.zero) > 1f) {
                 PlayerLife.pl.Die();
             }
         }

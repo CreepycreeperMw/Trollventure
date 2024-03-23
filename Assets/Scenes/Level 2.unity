@@ -190,7 +190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 60701303}
   - component: {fileID: 60701304}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,8 +334,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1371259893
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 48cd79d5dc2c67149bbed08f2db13c2d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -358,7 +358,7 @@ GameObject:
   m_Component:
   - component: {fileID: 256868316}
   - component: {fileID: 256868317}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leftBottom (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -538,6 +538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 862714749}
+  maxDistance: {x: 5, y: 2}
   followPlayer: 1
   targetPoint: {x: 0, y: 0, z: 0}
   speed: 0.2
@@ -709,7 +710,7 @@ GameObject:
   - component: {fileID: 457902139}
   - component: {fileID: 457902138}
   - component: {fileID: 457902142}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: UnsafeRock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -924,7 +925,7 @@ GameObject:
   m_Component:
   - component: {fileID: 500597122}
   - component: {fileID: 500597123}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: topRight (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1008,7 +1009,7 @@ GameObject:
   m_Component:
   - component: {fileID: 512263656}
   - component: {fileID: 512263657}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7373,7 +7374,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1371259893
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 9
   m_Sprite: {fileID: 21300000, guid: b25fb686032278845866ff8b7f7334da, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7568,7 +7569,7 @@ GameObject:
   m_Component:
   - component: {fileID: 939249681}
   - component: {fileID: 939249682}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: topRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7652,7 +7653,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1017140212}
   - component: {fileID: 1017140213}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leftBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7942,7 +7943,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1559576135}
   - component: {fileID: 1559576136}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: topLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8026,7 +8027,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1725781363}
   - component: {fileID: 1725781364}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wBottomLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8155,7 +8156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1811586943}
   - component: {fileID: 1811586944}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rightBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8239,7 +8240,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1957829751}
   - component: {fileID: 1957829752}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wTopRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
