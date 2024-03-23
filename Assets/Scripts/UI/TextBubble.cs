@@ -22,6 +22,7 @@ public class TextBubble : MonoBehaviour
     private DateTime nextUpdate = DateTime.MinValue;
     private string writtenText;
     private int minLines = 0;
+    private bool skipped = false;
 
     private void Awake()
     {
@@ -33,22 +34,34 @@ public class TextBubble : MonoBehaviour
     {
         if(!isWriting)
         {
-            if(Input.GetKeyDown(KeyCode.Return) || (nextUpdate != DateTime.MinValue && (nextUpdate.Millisecond - DateTime.Now.Millisecond <= 0)))
+            /*if(Input.GetKeyDown(KeyCode.Return) || (nextUpdate != DateTime.MinValue && (nextUpdate.Millisecond - DateTime.Now.Millisecond <= 0)))
             {
                 nextUpdate = DateTime.MinValue;
                 if(targetText != textMeshPro.text)
                 {
                     isWriting = true;
                 }
-            }
+            }*/
             return;
         }
-        if(targetText == string.Empty || charI >= targetText.Length)
+        if (targetText == string.Empty || charI >= targetText.Length)
         {
             targetText = string.Empty;
             tempTime = 0f;
             isWriting = false;
             Debug.Log("DONE WRITING OUT TEXT");
+            return;
+        }
+        else Debug.Log(isWriting); Debug.Log(skipped);
+
+        if(Input.GetKeyDown(KeyCode.Return))
+        {
+            skipped = true;
+            isWriting = false;
+            tempTime = 0f;
+            charI = targetText.Length;
+            SetTextWithMinLines(targetText, minLines);
+            isWriting = false;
             return;
         }
 
@@ -57,7 +70,6 @@ public class TextBubble : MonoBehaviour
         {
             tempTime -= frequency;
             writtenText += targetText[charI];
-            Debug.Log(charI + ": " + writtenText + " min "+minLines);
 
             SetTextWithMinLines(writtenText, minLines);
             charI++;
@@ -147,7 +159,7 @@ public class TextBubble : MonoBehaviour
         isWriting = true;
     }
 
-    public IEnumerable WriteDialouge(Dialouge dialouge)
+    public IEnumerator WriteDialouge(Dialouge dialouge)
     {
         foreach (var page in dialouge.entries)
         {
@@ -162,10 +174,15 @@ public class TextBubble : MonoBehaviour
                 targetText = writtenText + part.text;
                 frequency = part.writingFrequency;
                 isWriting = true;
+                skipped = false;
                 yield return new WaitUntil(() => isWriting == false);
-                yield return new WaitForSeconds(part.stayDuration);
+
+                if (skipped) { SetText(page.getTotalText()); break; }
+                else yield return new WaitForSeconds(part.stayDuration);
             }
             if(!page.keepGoingImmediatly) {
+                /// TODO : Notify user that he needs to press enter to keep going
+                if(skipped) yield return new WaitUntil(()=>Input.GetKeyUp(KeyCode.Return));
                 yield return new WaitUntil(()=>Input.GetKeyDown(KeyCode.Return));
             }
         }

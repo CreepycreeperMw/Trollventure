@@ -3356,6 +3356,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gandalf: {fileID: 2027171249}
   con: {fileID: 1407092131}
+  dialougeEntries:
+  - dialougeSentences:
+    - text: Hmm...
+      writingDuration: 0.4
+      stayDuration: 1.2
+    offset: {x: 0, y: 0}
+    keepGoingImmediatly: 1
+  - dialougeSentences:
+    - text: Applaus
+      writingDuration: 0.4
+      stayDuration: 0.8
+    - text: ', fast unterdurchschnittlich'
+      writingDuration: 1
+      stayDuration: 0.1
+    - text: .
+      writingDuration: 0
+      stayDuration: 2.4
+    offset: {x: 0, y: 0}
+    keepGoingImmediatly: 0
+  - dialougeSentences:
+    - text: ...
+      writingDuration: 2
+      stayDuration: 0.1
+    - text: ' das ist ein Portal'
+      writingDuration: 1
+      stayDuration: 3
+    offset: {x: 0, y: 0}
+    keepGoingImmediatly: 1
+  - dialougeSentences:
+    - text: Wenn du weiter moechtest musst du dadurch
+      writingDuration: 2
+      stayDuration: 0.1
+    - text: .
+      writingDuration: 0
+      stayDuration: 2.3
+    offset: {x: 0, y: 0}
+    keepGoingImmediatly: 0
+  - dialougeSentences:
+    - text: Aber sei nicht zu langsam...
+      writingDuration: 0.3
+      stayDuration: 2
+    offset: {x: 0, y: 0}
+    keepGoingImmediatly: 1
 --- !u!1 &1972877332
 GameObject:
   m_ObjectHideFlags: 0

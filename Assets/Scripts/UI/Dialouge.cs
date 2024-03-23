@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
+
+[System.Serializable]
 public class Dialouge
 {
     private DialougeEntry[] dialougeEntries;
@@ -17,9 +19,10 @@ public class Dialouge
     }
 }
 
+[System.Serializable]
 public class DialougeEntry
 {
-    DialougeSentence[] dialougeSentences;
+    [SerializeField] private DialougeSentence[] dialougeSentences;
     public Vector2 offset = new Vector2(-3f, 1f);
     public bool keepGoingImmediatly = false;
 
@@ -62,42 +65,46 @@ public class DialougeEntry
         return stringBuilder.ToString();
     }
 }
+
+[System.Serializable]
 public class DialougeSentence
 {
     public string text;
-    public float writingFrequency = 0.01f;
+    public float writingDuration = 0.6f;
     public float stayDuration = 2f;
 
     public DialougeSentence(string _text)
     {
         text = _text;
+        writingDuration = 0.01f * _text.Length;
     }
 
     public DialougeSentence(string _text, float _stayDuration)
     {
         text = _text;
+        writingDuration = 0.01f * _text.Length;
         stayDuration = _stayDuration;
     }
 
-    public DialougeSentence(string _text, float _writingFrequency, float _stayDuration)
+    public DialougeSentence(string _text, float writingTime, float _stayDuration)
     {
         text = _text;
-        writingFrequency = _writingFrequency;
+        writingDuration = writingTime;
         stayDuration = _stayDuration;
     }
 
-    float writingTime
+    public float writingFrequency
     {
-        get { return writingFrequency * text.Length; }
-        set { writingFrequency = value / text.Length; }
+        get { return writingDuration / text.Length; }
+        set { writingDuration = value * text.Length; }
     }
 
-    static DialougeSentence create(string text, float writingDuration)
+    static DialougeSentence CreateWithFrequency(string text, float writingFrequency)
     {
-        return new DialougeSentence(text, writingDuration / text.Length);
+        return new DialougeSentence(text, writingFrequency * text.Length);
     }
-    static DialougeSentence create(string text, float writingDuration, float stayDuration)
+    static DialougeSentence CreateWithFrequency(string text, float writingDuration, float stayDuration)
     {
-        return new DialougeSentence(text, writingDuration / text.Length, stayDuration);
+        return new DialougeSentence(text, writingDuration * text.Length, stayDuration);
     }
 }

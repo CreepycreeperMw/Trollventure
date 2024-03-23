@@ -9,10 +9,13 @@ public class GandalfEncounter2 : MonoBehaviour
     private Animator anim;
     private bool triggered = false;
     private Vector3 offset = new Vector3(-3f, 1.4f);
+    [SerializeField] public DialougeEntry[] dialougeEntries;
+    private Dialouge dialouge;
 
     private void Start()
     {
         anim = gandalf.GetComponent<Animator>();
+        dialouge = new Dialouge(dialougeEntries);
     }
 
     private IEnumerator OnTriggerEnter2D(Collider2D collision)
@@ -30,9 +33,11 @@ public class GandalfEncounter2 : MonoBehaviour
             fade.StartFade(3f, 0f, 1f, 0.2f);
 
             yield return new WaitForSeconds(3f);
-
             TextBubble tb = TextBubble.Create(con, "", offset);
-            tb.WriteText("Hmm...", 0.4f, offset);
+            yield return StartCoroutine(tb.WriteDialouge(dialouge));
+
+
+            /*tb.WriteText("Hmm...", 0.4f, offset);
             yield return new WaitUntil(() => !tb.isWriting);
             yield return new WaitForSeconds(1.2f);
 
@@ -49,7 +54,7 @@ public class GandalfEncounter2 : MonoBehaviour
             tb.Setup("Geh durch...", offset);
             yield return new WaitForSeconds(2f);
             tb.Setup("Aber nicht zu langsam!", offset);
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(2f);*/
             tb.Delete();
 
             fade.StartFade(0.5f, 0f, 0f, 1f);
